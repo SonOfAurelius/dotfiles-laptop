@@ -1,0 +1,18 @@
+default-timeout=5000
+
+# Styling
+font=JetBrainsMono Nerd Font, Light 12
+width=392
+height=432
+margin=4,4,0,0
+padding=8,8,8,8
+background-color=#000000FF
+border-color=#000000FF
+border-radius=8
+icons=1
+layer=overlay
+max-visible=5
+
+# History
+history=1
+max-history=20
