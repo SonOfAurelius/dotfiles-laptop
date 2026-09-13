@@ -1,11 +1,10 @@
-return function(terminal, fileManager, launcher, appLauncher)
+return function(terminal, launcher, appLauncher)
     local mod = "SUPER"
 
     local binds = {
         -- General --
         hl.bind(mod .. " + SPACE", hl.dsp.exec_cmd(terminal)),
         hl.bind(mod .. " + Q", hl.dsp.window.close()),
-        hl.bind(mod .. " + I", hl.dsp.exec_cmd(fileManager)),
         hl.bind(mod .. " + V", hl.dsp.window.float({ action = "toggle "})),
         hl.bind(mod .. " + D", hl.dsp.exec_cmd(appLauncher)),
         hl.bind(mod .. " + SHIFT + D", hl.dsp.exec_cmd(launcher)),

@@ -2,16 +2,16 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 20, // Waybar height (to be removed for auto height)
+    "height": 32, // Waybar height (to be removed for auto height)
     //"width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
         "hyprland/workspaces",
+        "hyprland/window",
         "hyprland/submap"
     ],
     "modules-center": [
-        "hyprland/window"
     ],
     "modules-right": [
         "backlight",
@@ -19,6 +19,7 @@
         "cpu",
         "memory",
         "temperature",
+        "battery",
         "clock",
         "tray"
     ],
@@ -64,6 +65,20 @@
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+    "battery": {
+	    "states": {
+	    	"warning": 30,
+	    	"critical": 15
+    	},
+    	"events": {
+    		"on-discharging-warning": "notify-send -u normal 'Low Battery'",
+    		"on-discharging-critical": "notify-send -u critical 'Very Low Battery'",
+    		"on-charging-100": "notify-send -u normal 'Battery Full!'"
+    	},
+    	"format": "{capacity}% {icon}",
+    	"format-icons": ["", "", "", "", ""],
+    	"max-length": 25
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface

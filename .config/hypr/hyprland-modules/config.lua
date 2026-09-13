@@ -1,12 +1,12 @@
 return {
     hl.config({
         general = {
-            gaps_in = 5,
-            gaps_out = 10,
-            border_size = 2,
+            gaps_in = 0,
+            gaps_out = 0,
+            border_size = 1,
 
             col = {
-                active_border = "rgba(FFFFFFFF)",
+                active_border = "rgba(808080FF)",
                 inactive_border = "rgba(000000FF)",
             },
 
