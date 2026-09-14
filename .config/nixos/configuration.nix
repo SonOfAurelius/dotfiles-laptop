@@ -74,7 +74,7 @@
     extraGroups = [ "wheel" ];
   };
 
-  settings.experimental-features = [ "flakes" "nix-command"];
+  nix.settings.experimental-features = [ "flakes" "nix-command"];
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
@@ -97,6 +97,7 @@
     unzip
     bolt-launcher
     btop
+    concord
 
     # screenshot capability
     grim
