@@ -23,4 +23,8 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias zj='zellij -l welcome'
 
+alias leds='sudo chmod 755 /sys/class/leds/platform::mute/max_brightness && echo 0 | sudo tee /sys/class/leds/platform::mute/max_brightness && echo 0 | sudo tee /sys/class/leds/platform::micmute/brightness'
+
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+export XDG_CONFIG_HOME="$HOME/.config"

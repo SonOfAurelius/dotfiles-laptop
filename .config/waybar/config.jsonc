@@ -16,8 +16,8 @@
     "modules-right": [
         "backlight",
         "pulseaudio",
-        "cpu",
-        "memory",
+        //"cpu",
+        //"memory",
         "temperature",
         "battery",
         "clock",
@@ -77,6 +77,9 @@
     		"on-charging-100": "notify-send -u normal 'Battery Full!'"
     	},
     	"format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% 󰃨",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
     	"format-icons": ["", "", "", "", ""],
     	"max-length": 25
     },
@@ -92,7 +95,7 @@
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
-        "format-muted": " {format_source}",
+        "format-muted": " {format_source}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {

@@ -8,7 +8,7 @@ return function(terminal, launcher, appLauncher)
         hl.bind(mod .. " + V", hl.dsp.window.float({ action = "toggle "})),
         hl.bind(mod .. " + D", hl.dsp.exec_cmd(appLauncher)),
         hl.bind(mod .. " + SHIFT + D", hl.dsp.exec_cmd(launcher)),
-        hl.bind(mod .. " + P", hl.dsp.window.pseudo()),
+        hl.bind(mod .. " + P", hl.dsp.exec_cmd("hyprlock")),
         hl.bind(mod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")),
 
         -- Move Focus With VIM Keys --
@@ -29,6 +29,9 @@ return function(terminal, launcher, appLauncher)
         hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true }),
         hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { locked = true, repeating = true }),
         hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true, repeating = true }),
+        hl.bind("XF86AudioMicMute",     hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), { locked = true, repeating = true }),
+        hl.bind("XF86MonBrightnessUp",  hl.dsp.exec_cmd("brightnessctl set 5%+"), { locked = true, repeating = true }),
+        hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd("brightnessctl set 5%-"), { locked = true, repeating = true }),
 
         -- Playerctl Binds -- 
         hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"), { locked = true }),

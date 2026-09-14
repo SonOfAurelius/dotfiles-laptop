@@ -6,7 +6,6 @@ vim.pack.add({
     { src = "https://github.com/j-hui/fidget.nvim" }, -- info widget
     { src = "https://github.com/dgagn/diagflow.nvim" }, -- minimal diagnostics
     { src = "https://github.com/windwp/nvim-autopairs" },
-    { src = "https://github.com/norcalli/nvim-colorizer.lua" },
     { src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
     { src = "https://github.com/rebelot/kanagawa.nvim" },
     { src = "https://github.com/nvim-tree/nvim-web-devicons" },
@@ -20,7 +19,6 @@ require("keymaps")
 require("options")
 
 -- Misc Setup -- 
-require("colorizer").setup()
 require("nvim-autopairs").setup{
     event = "InsertEnter",
     config = true,

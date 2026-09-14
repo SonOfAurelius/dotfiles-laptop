@@ -6,7 +6,7 @@ hl.monitor({
     output = "",
     mode = "1920x1080@60",
     position = "0x0",
-    scale = 1.2,
+    scale = 1.25,
 })
 
 -- Programs --
@@ -35,7 +35,7 @@ hl.permission({ binary = "/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland",
 
 -- Look and Feel --
 
-require("hyprland-modules.config")
+require("modules.config")
 
 hl.config({
     cursor = {
@@ -84,13 +84,15 @@ hl.config({
         sensitivity = 0,
         accel_profile = "flat",
 
-
+        touchpad = {
+            natural_scroll = true,
+        }
     }
 })
 
-local keyBinds = require("hyprland-modules.keybinds")
+local keyBinds = require("modules.keybinds")
 keyBinds(terminal, launcher, appLauncher)
 
 -- Windowrules --
 
-require("hyprland-modules.windowrules")
+require("modules.windowrules")

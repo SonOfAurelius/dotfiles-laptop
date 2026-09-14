@@ -30,6 +30,10 @@
 
   networking.hostName = "nixos"; # Define your hostname.
 
+  services.udev.extraRules = ''
+    ACTION=="change", SUBSYSTEM=="leds", KERNEL=="platform::mute", ATTR{brightness}="0"
+  '';
+
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
 
@@ -90,6 +94,8 @@
     stow
     librewolf
     unzip
+    bolt-launcher
+    btop
 
     # screenshot capability
     grim
