@@ -74,6 +74,7 @@
     extraGroups = [ "wheel" ];
   };
 
+  settings.experimental-features = [ "flakes" "nix-command"];
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [

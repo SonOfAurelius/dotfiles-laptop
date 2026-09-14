@@ -22,8 +22,10 @@ alias hpr='start-hyprland'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias zj='zellij -l welcome'
+alias sptf='/home/aurelius/spotify-player-0.25.1/result/bin/spotify_player'
 
-alias leds='sudo chmod 755 /sys/class/leds/platform::mute/max_brightness && echo 0 | sudo tee /sys/class/leds/platform::mute/max_brightness && echo 0 | sudo tee /sys/class/leds/platform::micmute/brightness'
+alias led1='echo 0 | sudo tee /sys/class/leds/platform::micmute/brightness'
+alias led2='echo 0 | sudo tee /sys/class/leds/platform::mute/brightness'
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
