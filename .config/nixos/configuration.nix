@@ -37,6 +37,18 @@
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
 
+  # Bluetooth
+  hardware.bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+      settings = {
+          General = {
+             Experimental = true; # Shows battery%
+             FastConnectable = true;
+          };
+      };
+  };
+
   # Set your time zone.
   time.timeZone = "Europe/Brussels";
 
@@ -94,10 +106,12 @@
     zellij
     stow
     librewolf
+    lynx
     unzip
     bolt-launcher
     btop
-    concord
+    concord-tui
+    bluetui
 
     # screenshot capability
     grim
