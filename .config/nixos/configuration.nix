@@ -88,6 +88,8 @@
 
   nix.settings.experimental-features = [ "flakes" "nix-command"];
 
+  programs.firefox.enable = true;
+
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     git
@@ -105,13 +107,13 @@
     zsh
     zellij
     stow
-    librewolf
-    lynx
+    firefox
     unzip
     bolt-launcher
     btop
     concord-tui
     bluetui
+    mako
 
     # screenshot capability
     grim
