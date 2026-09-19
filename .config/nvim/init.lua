@@ -1,8 +1,8 @@
--- Plugins --
+    -- Plugins --
 vim.pack.add({
     { src = "https://github.com/nvim-telescope/telescope.nvim" },
     { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
-    { src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1.*") },
+    { src = "https://github.com/nvim-mini/mini.completion" },
     { src = "https://github.com/j-hui/fidget.nvim" }, -- info widget
     { src = "https://github.com/dgagn/diagflow.nvim" }, -- minimal diagnostics
     { src = "https://github.com/windwp/nvim-autopairs" },
@@ -80,11 +80,14 @@ local servers = {
     }
 }
 
-vim.lsp.config("*", { capabilities = require("blink.cmp").get_lsp_capabilities() })
+vim.lsp.config("*", { capabilities = require("mini.completion").get_lsp_capabilities() })
 for server, config in pairs(servers) do
     vim.lsp.config(server, config)
     vim.lsp.enable(server)
 end
+
+-- Mini.completion Setup -- 
+require("mini.completion").setup()
 
 -- Diagflow Setup --
 require("diagflow").setup{
@@ -107,9 +110,9 @@ require("diagflow").setup{
 
 -- Colorscheme Setup --
 require("kanagawa").setup({
-    transparent = true,
+    transparent = false,
     overrides = function(colors)
-        return {
+         return {
             TabLine = { bg = "none" },
             TabLineFill = { bg = "none" },
             TablineSel = { bg = "none" },
@@ -118,7 +121,7 @@ require("kanagawa").setup({
     end,
     colors = {
         theme = {
-            all = {
+            dragon = {
                 ui = {
                     bg = "none",
                     bg_gutter = "none",
@@ -129,11 +132,13 @@ require("kanagawa").setup({
 })
 require("kanagawa").load("dragon")
 
+
 -- Lualine Setup --
 require("lualine").setup{
     options = {
         icons_enabled = true,
         theme = "iceberg_dark",
+        --theme = "gruvbox_light",
         section_separators = { left = "", right =  "" },
         component_separators = { left = "", right = "" },
         always_divide_middle = true,

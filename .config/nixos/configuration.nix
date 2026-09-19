@@ -108,9 +108,7 @@
     zellij
     stow
     firefox
-    unzip
     bolt-launcher
-    btop
     concord-tui
     bluetui
     mako
@@ -124,10 +122,11 @@
     neovim
     lua-language-server
     nixd
-    ols
     clang-tools
+    odin
+    ols
+    go
     gopls
-    deno   
   ] ++ pkgs.stdenv.initialPath;
 
   fonts.packages = with pkgs; [
