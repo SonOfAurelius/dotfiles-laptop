@@ -1,3 +1,5 @@
 //@theme "/nix/store/yb2z62w6i6rsvn3anzxl1rlhaq026ayr-rofi-2.0.0/share/rofi/themes/dmenu.rasi"
 
-@theme "/nix/store/4z2y00d9zhbqy32v4l7am2c9hp30p89a-rofi-2.0.0/share/rofi/themes/dmenu.rasi"
+//@theme "/nix/store/4z2y00d9zhbqy32v4l7am2c9hp30p89a-rofi-2.0.0/share/rofi/themes/dmenu.rasi"
+
+@theme "/nix/store/j7mrs5r0bywp3rkbq7gkr7lkgy31hsl1-rofi-2.0.0/share/rofi/themes/dmenu.rasi"

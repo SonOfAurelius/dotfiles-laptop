@@ -34,8 +34,8 @@
     ACTION=="change", SUBSYSTEM=="leds", KERNEL=="platform::mute", ATTR{brightness}="0"
   '';
 
-  # Configure network connections interactively with nmcli or nmtui.
-  networking.networkmanager.enable = true;
+  # Configure network connections with iwd.
+  networking.wireless.iwd.enable = true;
 
   # Bluetooth
   hardware.bluetooth = {
