@@ -60,12 +60,14 @@ local servers = {
         filetypes = { "odin" },
     },
     gopls = {
-	    cmd = { "gopls" },
-	    filetypes = { "go", "gomod", "gowork", "gotmpl" },
+        cmd = { "gopls" },
+        filetypes = { "go", "gomod", "gowork", "gotmpl" },
+        root_markers = { "go.work", "go.mod", ".git"},
     },
     nixd = {
-	    cmd = { "nixd" },
-	    filetypes = { "nix" },
+        cmd = { "nixd" },
+        filetypes = { "nix" },
+        settings = { nixd = vim.empty_dict(), }
     },
     denols = {
         cmd = { "deno", "lsp" },
@@ -77,7 +79,11 @@ local servers = {
                 lint = true,
             }
         }
-    }
+    },
+    basedpyright = {
+        cmd = { "basedpyright" },
+        filetypes = { "py" },
+    },
 }
 
 vim.lsp.config("*", { capabilities = require("mini.completion").get_lsp_capabilities() })
@@ -134,13 +140,32 @@ require("kanagawa").load("dragon")
 
 
 -- Lualine Setup --
+local function lsp_status_with_filetype()
+    local devicons = require("nvim-web-devicons")
+
+    local icon = devicons.get_icon_by_filetype(vim.bo.filetype)
+
+    local clients = vim.lsp.get_clients({ bufnr = 0 })
+
+    if #clients == 0 then
+        return ""
+    end
+
+    local names = {}
+    for _, client in ipairs(clients) do
+        table.insert(names, client.name)
+    end
+
+    return (icon or "󰈚") .. " " .. table.concat(names, ", ")
+end
+
 require("lualine").setup{
     options = {
         icons_enabled = true,
         theme = "iceberg_dark",
         --theme = "gruvbox_light",
         section_separators = { left = "", right =  "" },
-        component_separators = { left = "", right = "" },
+        --component_separators = { left = "", right = "" },
         always_divide_middle = true,
     },
     sections = {
@@ -149,6 +174,7 @@ require("lualine").setup{
         lualine_c = {
             "diff",
         },
-        lualine_x = { "diagnostics" }
+        lualine_x = { "diagnostics" },
+        lualine_z = { lsp_status_with_filetype }
     }
 }

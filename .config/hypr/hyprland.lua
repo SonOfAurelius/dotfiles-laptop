@@ -3,10 +3,18 @@
 -- Monitors --
 
 hl.monitor({
-    output = "",
+    output = "eDP-1",
     mode = "1920x1080@60",
     position = "0x0",
     scale = 1.25,
+})
+
+hl.monitor({
+    output = "",
+    mode = "preferred",
+    position = "auto",
+    scale = 1.25,
+    mirror = "eDP-1",
 })
 
 -- Programs --
@@ -45,8 +53,8 @@ hl.config({
         rounding = 0,
         rounding_power = 0,
 
-        active_opacity = 1.0,
-        inactive_opacity = 1.0,
+        active_opacity = 1,
+        inactive_opacity = 1,
 
         shadow = {
             enabled = false,

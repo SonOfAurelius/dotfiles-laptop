@@ -59,6 +59,7 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+    withUWSM = true;
   };
 
 
@@ -111,7 +112,11 @@
     bolt-launcher
     concord-tui
     bluetui
+    impala
     mako
+    btop
+    fastfetch
+    spotatui
 
     # screenshot capability
     grim
@@ -125,9 +130,10 @@
     clang-tools
     odin
     ols
-    go
+    go_1_27
     gopls
-  ] ++ pkgs.stdenv.initialPath;
+    
+  ];
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono

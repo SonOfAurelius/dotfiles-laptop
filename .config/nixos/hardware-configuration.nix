@@ -13,6 +13,17 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  fileSystems."/boot" = {
+      device = "/dev/disk/by-uuid/f14de47e-42b1-43ad-a653-49a946427ee7";
+      fsType = "ext4";
+  };
+
+  fileSystems."/boot/efi" = {
+      device = "/dev/disk/by-uuid/060B-6223";
+      fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
+  };
+  
   fileSystems."/" =
     { device = "/dev/mapper/root";
       fsType = "ext4";
