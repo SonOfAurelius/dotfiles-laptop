@@ -26,6 +26,10 @@ alias zj='zellij -l welcome'
 alias sp='spotatui'
 alias cc='concord'
 
+# CMake
+alias bld1='cmake -S . -B build'
+alias bld2='cmake --build build'
+
 # Nix aliases
 alias nrs='sudo nixos-rebuild switch --flake ~/.config/nixos/'
 alias nedit='nvim ~/.config/nixos/configuration.nix'
@@ -39,7 +43,6 @@ alias zsource='source ~/.zshrc'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias rway='pkill waybar && waybar &'
+alias led1='echo 0 | sudo tee /sys/class/leds/platform::micmute/brightness'
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-export CGO_ENABLED=1

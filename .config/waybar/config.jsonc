@@ -19,7 +19,7 @@
         //"cpu",
         //"memory",
         "network",
-        "temperature",
+        //"temperature",
         "battery",
         "clock",
         "tray"

@@ -32,12 +32,19 @@ return {
     }),
 
     hl.window_rule({
-        name = "keep-firefox-opaque",
+        name = "keep-apps-opaque",
         match = {
-            class = ("^(firefox)$");
+            class = ("(firefox|RuneLite)");
         },
 
         opacity = "1 override 1 override"
+    }),
+    hl.window_rule({
+        name = "make-sdl-window-float",
+        match = {
+            class = "com.sweproject.sdl-test"
+        },
+        float = true
     }),
 
     -- Autostart Rules --

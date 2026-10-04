@@ -94,6 +94,7 @@
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     git
+    ripgrep
     wget
     wiremix
     rofi
@@ -109,6 +110,7 @@
     zellij
     stow
     firefox
+    thunderbird
     bolt-launcher
     concord-tui
     bluetui
@@ -117,6 +119,7 @@
     btop
     fastfetch
     spotatui
+    tmux
 
     # screenshot capability
     grim
@@ -127,6 +130,7 @@
     neovim
     lua-language-server
     nixd
+    clang
     clang-tools
     odin
     ols

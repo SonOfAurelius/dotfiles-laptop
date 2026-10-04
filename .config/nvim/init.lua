@@ -1,4 +1,5 @@
-    -- Plugins --
+vim.deprecate = function() end
+-- Plugins --
 vim.pack.add({
     { src = "https://github.com/nvim-telescope/telescope.nvim" },
     { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
@@ -6,10 +7,13 @@ vim.pack.add({
     { src = "https://github.com/j-hui/fidget.nvim" }, -- info widget
     { src = "https://github.com/dgagn/diagflow.nvim" }, -- minimal diagnostics
     { src = "https://github.com/windwp/nvim-autopairs" },
+    { src = "https://github.com/lewis6991/gitsigns.nvim" },
     { src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
-    { src = "https://github.com/rebelot/kanagawa.nvim" },
+    { src = "https://github.com/metalelf0/black-metal-theme-neovim" },
     { src = "https://github.com/nvim-tree/nvim-web-devicons" },
     { src = "https://github.com/nvim-lualine/lualine.nvim" },
+    { src = "https://github.com/folke/which-key.nvim" },
+    { src = "https://github.com/norcalli/nvim-colorizer.lua" }
 })
 
 -- Keymaps --
@@ -19,26 +23,41 @@ require("keymaps")
 require("options")
 
 -- Misc Setup -- 
-require("nvim-autopairs").setup{
+require("fidget").setup()
+require("colorizer").setup()
+require("which-key").setup()
+require("nvim-autopairs").setup({
     event = "InsertEnter",
     config = true,
     opts = {}
-}
-require("ibl").setup{
+})
+require("ibl").setup({
     indent = { char = "▏"},
-}
+})
 
 -- Telescope Setup --
-require("telescope").setup{
+require("telescope").setup({
     dependencies = {
         vim.pack.add({
             { src = "https://github.com/nvim-lua/plenary.nvim" },
             { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
         })
     }
-}
+})
 
 -- LSP Setup --
+require("mini.completion").setup({
+    delay = { completion = 1, info = 100, signature = 50 },
+    window = {
+        info = { height = 25, width = 80, border = nil },
+        signature = { height = 25, width = 80, border = nil },
+    },
+    mappings = {
+      scroll_down = '<C-n>',
+      scroll_up = '<C-p>',
+    },
+})
+
 local servers = {
     lua_ls = {
         cmd = { "lua-language-server" },
@@ -60,14 +79,12 @@ local servers = {
         filetypes = { "odin" },
     },
     gopls = {
-        cmd = { "gopls" },
-        filetypes = { "go", "gomod", "gowork", "gotmpl" },
-        root_markers = { "go.work", "go.mod", ".git"},
+	    cmd = { "gopls" },
+	    filetypes = { "go", "gomod", "gowork", "gotmpl" },
     },
     nixd = {
-        cmd = { "nixd" },
-        filetypes = { "nix" },
-        settings = { nixd = vim.empty_dict(), }
+	    cmd = { "nixd" },
+	    filetypes = { "nix" },
     },
     denols = {
         cmd = { "deno", "lsp" },
@@ -79,11 +96,7 @@ local servers = {
                 lint = true,
             }
         }
-    },
-    basedpyright = {
-        cmd = { "basedpyright" },
-        filetypes = { "py" },
-    },
+    }
 }
 
 vim.lsp.config("*", { capabilities = require("mini.completion").get_lsp_capabilities() })
@@ -92,15 +105,12 @@ for server, config in pairs(servers) do
     vim.lsp.enable(server)
 end
 
--- Mini.completion Setup -- 
-require("mini.completion").setup()
-
 -- Diagflow Setup --
-require("diagflow").setup{
+require("diagflow").setup({
     event = "LspAttach",
     opts = {
         scope = "line",
-        show_borders = false,
+        show_borders = true,
         border_chars = {
             top_left = "┌",
             top_right = "┐",
@@ -112,32 +122,32 @@ require("diagflow").setup{
         placement = "top",
         inline_padding_left = 3,
     }
-}
+})
+
+-- Gitsigns Setup --
+require("gitsigns").setup({
+    signs = {
+        add = { text = '+' },
+        change = { text = '~' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
+    },
+    signs_staged = {
+        add = { text = '+' },
+        change = { text = '~' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
+    },
+})
 
 -- Colorscheme Setup --
-require("kanagawa").setup({
-    transparent = false,
-    overrides = function(colors)
-         return {
-            TabLine = { bg = "none" },
-            TabLineFill = { bg = "none" },
-            TablineSel = { bg = "none" },
-            SignColumn = { bg = "none" },
-        }
-    end,
-    colors = {
-        theme = {
-            dragon = {
-                ui = {
-                    bg = "none",
-                    bg_gutter = "none",
-                }
-            }
-        }
-    }
+require("black-metal").setup({
+    theme = "windir",
+    transparent = true,
 })
-require("kanagawa").load("dragon")
-
+require("black-metal").load()
 
 -- Lualine Setup --
 local function lsp_status_with_filetype()
@@ -159,22 +169,26 @@ local function lsp_status_with_filetype()
     return (icon or "󰈚") .. " " .. table.concat(names, ", ")
 end
 
-require("lualine").setup{
+local gruvbox = require("lualine.themes.gruvbox_dark")
+gruvbox.insert = gruvbox.normal
+gruvbox.visual = gruvbox.normal
+gruvbox.replace = gruvbox.normal
+gruvbox.command = gruvbox.normal
+
+require("lualine").setup({
     options = {
         icons_enabled = true,
-        theme = "iceberg_dark",
-        --theme = "gruvbox_light",
+        theme = "gruvbox",
         section_separators = { left = "", right =  "" },
-        --component_separators = { left = "", right = "" },
+        component_separators = { left = "", right = "" },
         always_divide_middle = true,
     },
     sections = {
         lualine_a = { "mode" },
         lualine_b = { "branch" },
-        lualine_c = {
-            "diff",
-        },
+        lualine_c = { "filename" },
+
         lualine_x = { "diagnostics" },
         lualine_z = { lsp_status_with_filetype }
     }
-}
+})

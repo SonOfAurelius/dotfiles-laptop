@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "black-metal-theme-neovim": {
+      "rev": "5d61bbd0ec3471c27168431dd2986cc77e28c848",
+      "src": "https://github.com/metalelf0/black-metal-theme-neovim"
+    },
     "blink.cmp": {
       "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
       "src": "https://github.com/saghen/blink.cmp",
@@ -12,6 +16,10 @@
     "fidget.nvim": {
       "rev": "9e0201673e08e997e7cf52afca5565c70bd117f3",
       "src": "https://github.com/j-hui/fidget.nvim"
+    },
+    "gitsigns.nvim": {
+      "rev": "070a5d7b985546cc57e1fc61e5bc507fecac6045",
+      "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "indent-blankline.nvim": {
       "rev": "f1e186e44d3b7f9ae918008e2c28ce37c6023d2d",
@@ -56,6 +64,10 @@
     "telescope.nvim": {
       "rev": "40aedd8a68c78a656a10a8d62d80c54af59420fb",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
+    },
+    "which-key.nvim": {
+      "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
+      "src": "https://github.com/folke/which-key.nvim"
     }
   }
 }

@@ -28,3 +28,6 @@ end, { desc = "Toggle Inlay Hints" })
 
 -- Keep last yanked when pasting
 vim.keymap.set("v", "p", '"_dP', { silent = true })
+
+-- Reload config
+vim.keymap.set("n", "<leader>hr", "<cmd>:source $MYVIMRC <cr>")

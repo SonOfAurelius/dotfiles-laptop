@@ -6,7 +6,7 @@ hl.monitor({
     output = "eDP-1",
     mode = "1920x1080@60",
     position = "0x0",
-    scale = 1.25,
+    scale = 1.5,
 })
 
 hl.monitor({
@@ -53,8 +53,8 @@ hl.config({
         rounding = 0,
         rounding_power = 0,
 
-        active_opacity = 0.95,
-        inactive_opacity = 0.95,
+        active_opacity = 1,
+        inactive_opacity = 1,
 
         shadow = {
             enabled = false,
